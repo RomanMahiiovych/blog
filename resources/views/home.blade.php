@@ -13,7 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a class="btn btn-light" href="{{route('post.create')}}">Create post</a>
+                    @if(Auth::user()->hasRole('author'))
+                        <a class="btn btn-light" href="{{route('post.create')}}">Create post</a>
+                    @endif
                     You are logged in!
                 </div>
             </div>
