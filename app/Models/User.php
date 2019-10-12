@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles(){
+        return $this->belongsToMany(Role::class, 'roles_user', 'userId', 'roleId');
+    }
+
+    public function getAvatarUrl(){
+        return "https://www.gravatar.com/avatar/{{md5( $this->email )}}?d=mm&s=40";
+    }
+    public function posts(){
+        return $this->belongsTo(Post::class, 'id');
+    }
+
+    public function comments(){
+        return $this->belongsTo(Comment::class, 'id');
+    }
 }

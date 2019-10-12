@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <a class="btn btn-light" href="{{route('post.create')}}">Create post</a>
                     You are logged in!
                 </div>
             </div>
