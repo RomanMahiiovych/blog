@@ -23,6 +23,14 @@
                                 <h5 class="mt-3 text-primary"><b>{{ $post->title }}</b></h5>
                                 <p>{{ $post->body }}</p>
 
+                                <div class="text-black-50 ">
+                                    <p>{{ $post->created_at->diffForHumans() }}</p>
+                                </div>
+
+                                {{--<ul class="list-inline text-right">
+                                    <li>{{ $post->created_at->diffForHumans() }}</li>
+                                </ul>--}}
+
 
                                 @foreach($post->comments as $comment)
 
@@ -37,9 +45,9 @@
                                                     {{ $comment->users->name }}
                                                 </a></h5>
                                             <p>{{ $comment->body  }}</p>
-                                            <ul class="list-inline">
-                                               {{-- <li>{{ $post->created_at->diffForHumans() }}</li>--}}
-                                            </ul>
+                                            {{--<ul class="list-inline">
+                                                <li>{{ $post->created_at->diffForHumans() }}</li>
+                                            </ul>--}}
                                         </div>
                                     </div>
 
@@ -58,8 +66,10 @@
                                             </style>
                                         @endif
                                     </div>
-                                    <input type="submit" value="Reply" class="btn btn-primary mt-2">
-                                    <input type="hidden" name="_token" value="{{ Session::token() }}">
+                                    <div class="mb-3">
+                                        <input type="submit" value="Reply" class="btn btn-primary mt-2">
+                                        <input type="hidden" name="_token" value="{{ Session::token() }}">
+                                    </div>
                                 </form>
 
                             </div>

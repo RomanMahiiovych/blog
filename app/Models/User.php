@@ -52,7 +52,7 @@ class User extends Authenticatable
         return $this->belongsTo(Comment::class, 'id');
     }
 
-    public function hasRole($roleSlug) : bool{
+    public function hasRole($roleSlug) : bool {
         return $this->roles()->where('slug', $roleSlug)->count() == 1;
     }
 }

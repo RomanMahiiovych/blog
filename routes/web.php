@@ -19,8 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/post', 'PostController');
+Route::resource('/post', 'PostController')->middleware('can:create-post')->except(['index']);
+
+Route::get('/post', 'PostController@index')->name('post.index');
 
 Route::post('/post/{post}/comments', 'CommentsController@store');
+
+Route::resource('/admin', 'AdministrateController')->middleware('can:administrate-users');
+
+
 
 

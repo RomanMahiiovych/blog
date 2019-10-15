@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
     protected $table = 'posts';
     protected $fillable = [
         'title', 'body', 'userId'
@@ -20,13 +26,4 @@ class Post extends Model
         return $this->hasMany(Comment::class, 'postId');
     }
 
-
-
-    /*public function addComment($body){
-        Comment::create([
-            'body' => $body,
-            'post_id' => $this->id,
-            'user_id' => Auth::user()
-        ]);
-    }*/
 }

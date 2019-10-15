@@ -34,11 +34,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         {{--<a class="btn btn-light" href="{{route('post.create')}}">Create post</a>--}}
-                        @if(\Illuminate\Support\Facades\Auth::user()->hasRole('commentator'))
-                        <li class="nav-item"><a class="nav-link" href="{{ route('post.create') }}">Create post</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('post.index') }}">Posts</a></li>
-                        @else
-                        <li class="nav-item"><a class="nav-link" href="{{ route('post.index') }}">Posts</a></li>
+                        @if(Auth::check())
+                            @if(Auth::user()->hasRole('author'))
+                                <li class="nav-item"><a class="nav-link" href="{{ route('post.create') }}">Create post</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('post.index') }}">Posts</a></li>
+                            @else
+                                <li class="nav-item"><a class="nav-link" href="{{ route('post.index') }}">Posts</a></li>
+                            @endif
                         @endif
                     </ul>
 
