@@ -28,5 +28,13 @@ class RolesSeeder extends Seeder
                 'create-comment' => true
             ]
         ]);
+
+        $admin = Role::create([
+            'name' => 'Admin',
+            'slug' => 'admin',
+            'permissions' => [
+                'administrate-users' => true
+            ]
+        ]);
     }
 }
